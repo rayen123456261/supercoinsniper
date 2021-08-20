@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" style=" margin:0px;height:100vh; box-sizing: border-box">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<style type="text/css">
+  #table-scroll {
+  height:150px;
+  overflow:auto;  
+  margin-top:20px;
+}
+</style>
+    <title>Grad School HTML5 Template</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!--
+    
+TemplateMo 557 Grad School
+
+https://templatemo.com/tm-557-grad-school
+
+-->
+  </head>
+
+<body style=" margin:0px;height:100vh; width: 100%;">
+
+   <div>
+  <!--header-->
+  <header class="main-header clearfix" role="header">
+    <div class="logo">
+      <a href="#"><em>Super Coin Sniper</em> </a>
+    </div>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    <nav id="menu" class="main-nav" role="navigation">
+      <ul class="main-menu">
+        <li><a href="#section1" >Home</a></li>
+        <li class="has-submenu"><a href="#" style="color:#f5a425">Buy</a>
+          <ul class="sub-menu">
+            <li><a href="playstation.html">Playstation</a></li>
+            <li><a href="xbox.html">Xbox</a></li>
+			<li><a href="pc.html">Pc</a></li>
+          </ul>
+        </li>
+        <li><a href="sell.html">Sell to us</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+   </div>
+  <!-- ***** Main Banner Area Start ***** -->
+
+    <div  style="height: 100%;background-color: rgba(22,34,57,0.95); width: 100%;display: flex;justify-content: center;">
+      <div style=" position: absolute;top :25%;margin:0 auto; width: 70%;height: 300px;overflow: hidden;box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;">
+        <div class="vl">
+        <div style="width: 90%;height : 200px;float: left;margin-left: 2%;">
+        
+          <table class="table" style="color:white;">
+            <thead >
+              <tr >
+                <th style="border-top: none;" scope="col">Product</th>
+                <th style="border-top: none;" scope="col">Price</th>
+                <th style="border-top: none;" scope="col">Quantity</th>
+                <th style="border-top: none;" scope="col">subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="tbody1">
+              
+            </tbody>
+          </table>
+          <div class='main-button ' style="top: 65%;left: 0;text-align: center;width: 40%;font-size: 2em; font-family: 'Advent Pro', sans-serif;"><a  href="index.html" style="width: 100%;font-family: 'Advent Pro', sans-serif;font-size: 14px;color: #f5a425; border:1px solid #f5a425 ; background-color: transparent; height: 100%; display: block;" >CONTINUE SHOPPING</a></div>
+        </div>
+      </div>
+        <div style="width: 40%;height : 400px;overflow: hidden;float: right;margin-right: 2%;">
+          <table class="table" style="color:white;">
+            <thead>
+              <tr>
+                <th style="border-top: none;" scope="col">CART TOTALS</th>
+                <th style="border-top: none;" scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="tbody2">
+              
+            </tbody>
+          </table>
+        
+        </div>
+      </div>
+  
+    </div>
+<style>
+  .vl {
+  border-right: 2px solid white;
+  height: 95%;
+  position: absolute;
+  width: 55%;
+  margin-left: -3px;
+  margin-bottom: 2%;
+  margin-top: 1%;
+  top: 0;
+}
+</style>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/video.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+      let psOrders = []
+      let xboxOrders = []
+      let pcOrders = []
+      let total
+      let discount = 0
+      const xboxPrice = 3.2
+      const psPrice = 3.2
+      const pcPrice = 3.2
+      $('document').ready(function(){
+        setOrders()
+        
+      })
+      function setOrders(){
+        total = 0
+        if(localStorage.getItem("psOrders"))
+          psOrders = localStorage.getItem("psOrders").split(',')
+        if(localStorage.getItem("xboxOrders"))
+          xboxOrders = localStorage.getItem("xboxOrders").split(',')
+        if(localStorage.getItem("pcOrders"))
+          pcOrders = localStorage.getItem("pcOrders").split(',')
+        console.log(psOrders)
+        psOrders.forEach((element, index) => {
+          let type =1
+          total += element/1000 * psPrice
+          console.log(index)
+          $("#tbody1").append("<tr id='ps"+index+"'><td><a id='delete' href='#' onClick='remove("+index+","+type+")'><img src='assets/images/delete.png' alt='delete icon' style='height:20px;width:20px;margin-right:10px'></a><img src='assets/images/psIcon.jpg' alt='playstation icon' style='height: 30px;width:30px'>  Playstation - "+element+" k</td><td>"+(element/1000 * psPrice).toFixed(2)+"</td><td>1</td><td>"+(element/1000 * psPrice).toFixed(2) +"</td></tr>")
+        });
+        xboxOrders.forEach((element, index) => {
+          let type =2
+          total += element/1000 * xboxPrice
+          console.log(index)
+          $("#tbody1").append("<tr id='xbox"+index+"'><td><a id='delete' href='#' onClick='remove("+index+","+type+")'><img src='assets/images/delete.png' alt='delete icon' style='height:20px;width:20px;margin-right:10px'></a><img src='assets/images/xboxIcon.jpg' alt='xbox icon' style='height: 30px;width:30px'>  Xbox - "+element+" k</td><td>"+(element/1000 * xboxPrice).toFixed(2)+"</td><td>1</td><td>"+(element/1000 * xboxPrice).toFixed(2) +"</td></tr>")
+        });
+        pcOrders.forEach((element, index) => {
+          let type =3
+          total += element/1000 * pcPrice
+          console.log(index)
+          $("#tbody1").append("<tr id='pc"+index+"'><td><a id='delete' href='#' onClick='remove("+index+","+type+")'><img src='assets/images/delete.png' alt='delete icon' style='height:20px;width:20px;margin-right:10px'></a><img src='assets/images/pcIcon.jpg' alt='px icon' style='height: 30px;width:30px'>  PC - "+element+" k</td><td>"+(element/1000 * pcPrice).toFixed(2)+"</td><td>1</td><td>"+(element/1000 * pcPrice).toFixed(2) +"</td></tr>")
+        });
+          $("#tbody2").append("<tr><td>Subtotal</td> <td style='text-align:right'>"+total.toFixed(2)+"</td> </tr>")
+          $("#tbody2").append("<tr><td>Discount</td> <td style='text-align:right'>"+discount.toFixed(2)+"</td> </tr>")
+          $("#tbody2").append("<tr><td>Total</td> <td style='text-align:right'>"+(total-discount).toFixed(2)+"</td> </tr>")
+          $("#tbody2").append("<tr><td colspan='2'> <div class='main-button ' style='margin: auto;top: 65%;left: 0;text-align: center;width: 100%;font-size: 2em; font-family: 'Advent Pro', sans-serif;'><div class='scroll-to-section''style='width: 100%;margin: auto;display: block;'><a id='checkout' style='width: 100%;font-family: \'Advent Pro\', sans-serif;font-size: 20px;color: white'>Checkout</a></div></div></td> </tr>")
+
+      }
+      function remove(i,type){
+        if(type == 1){
+          
+          psOrders = psOrders.filter((element,index)=>{
+            console.log(index+"   "+i)
+            return index != i
+          })
+          localStorage.setItem("psOrders",psOrders.join(','))
+        }else if(type == 2){
+          xboxOrders = xboxOrders.filter((element,index)=>{
+            console.log(index+"   "+i)
+            return index != i
+          })
+          localStorage.setItem("xboxOrders",xboxOrders.join(','))
+        }else if (type == 3){
+          pcOrders = psOrders.filter((element,index)=>{
+            console.log(index+"   "+i)
+            return index != i
+          })
+          localStorage.setItem("pcOrders",pcOrders.join(','))
+        }
+        
+        $("tbody").empty();
+        
+        setOrders()
+        
+        
+        
+      }
+    </script>
+</body>
+</html>
